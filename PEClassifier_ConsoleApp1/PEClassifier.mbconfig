@@ -1,0 +1,140 @@
+﻿{
+  "Scenario": "Regression",
+  "DataSource": {
+    "Type": "TabularFile",
+    "Version": 1,
+    "FilePath": "C:\\Users\\Ko\\Desktop\\All\\Files\\DataSet\\Malwares\\pe_section_headers.csv",
+    "Delimiter": ",",
+    "DecimalMarker": ".",
+    "HasHeader": true,
+    "ColumnProperties": [
+      {
+        "ColumnName": "hash",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "String",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 3
+      },
+      {
+        "ColumnName": "size_of_data",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 3
+      },
+      {
+        "ColumnName": "virtual_address",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": true,
+        "Type": "Column",
+        "Version": 3
+      },
+      {
+        "ColumnName": "entropy",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 3
+      },
+      {
+        "ColumnName": "virtual_size",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 3
+      },
+      {
+        "ColumnName": "malware",
+        "ColumnPurpose": "Label",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": true,
+        "Type": "Column",
+        "Version": 3
+      }
+    ]
+  },
+  "Environment": {
+    "Type": "LocalCPU",
+    "Version": 1
+  },
+  "RunHistory": {
+    "Version": 3,
+    "Type": "Result",
+    "Trials": [
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "LightGbmRegression",
+        "Score": 0.23445434606210458,
+        "RuntimeInSeconds": 3.08,
+        "Parameter": {
+          "_SCHEMA_": "e0*e1*e2*e3",
+          "e0": {
+            "OutputColumnNames": [
+              "size_of_data",
+              "virtual_address",
+              "entropy",
+              "virtual_size"
+            ],
+            "InputColumnNames": [
+              "size_of_data",
+              "virtual_address",
+              "entropy",
+              "virtual_size"
+            ]
+          },
+          "e1": {
+            "InputColumnName": "hash",
+            "OutputColumnName": "hash"
+          },
+          "e2": {
+            "InputColumnNames": [
+              "size_of_data",
+              "virtual_address",
+              "entropy",
+              "virtual_size",
+              "hash"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e3": {
+            "NumberOfLeaves": 76,
+            "MinimumExampleCountPerLeaf": 101,
+            "LearningRate": 0.99999977667298645,
+            "NumberOfTrees": 4,
+            "SubsampleFraction": 0.99999977667298645,
+            "MaximumBinCountPerFeature": 315,
+            "FeatureFraction": 0.96976447975675173,
+            "L1Regularization": 2E-10,
+            "L2Regularization": 0.99999977667298645,
+            "LabelColumnName": "malware",
+            "FeatureColumnName": "Features"
+          }
+        }
+      }
+    ],
+    "Estimators": {
+      "e0": "ReplaceMissingValues",
+      "e1": "FeaturizeText",
+      "e2": "Concatenate",
+      "e3": "LightGbmRegression"
+    },
+    "Schema": "e0*e1*e2*e3",
+    "MetricName": "RSquared",
+    "ModelFilePath": "C:\\Users\\Ko\\Desktop\\All\\projects\\engine\\KavEngine\\PEClassifier_ConsoleApp1\\PEClassifier.zip"
+  },
+  "Type": "TrainingConfig",
+  "Version": 3,
+  "TrainingOption": {
+    "Version": 0,
+    "Type": "RegressionTrainingOption",
+    "TrainingTime": 600,
+    "LabelColumn": "malware",
+    "Seed": 0
+  }
+}
