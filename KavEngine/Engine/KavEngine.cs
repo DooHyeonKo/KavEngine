@@ -1,23 +1,3 @@
-﻿/*
- * Scan Engine Library
- * 
- * Copyright (C) 2022 DuHyeon-Ko
- * 
- * KOR
- * 
- * 이 프로젝트는 바이러스 검사 코어 엔진 라이브러리입니다. 
- * 그리고 이 프로젝트는 오픈 소스 프로젝트이고 다른 사이트
- * 에 코드를 변경해 배포하면 안됨니다. 
- * 
- * ENG
- * 
- * This project is a virus scan core engine library.
- * And this project is an open source project
- * You must not change the code and distribute it.
- * 
- * Created by KamSecurity
-*/
-
 using Features;
 using System.Threading.Tasks;
 using System;
